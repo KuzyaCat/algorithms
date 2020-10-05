@@ -1,3 +1,5 @@
+using System;
+
 namespace binary_search_tree
 {
 
@@ -56,6 +58,11 @@ namespace binary_search_tree
             {
                 node.Right = Insert(node.Right, data);
             }
+            
+            node.Height = 1 + Math.Max(
+                GetNodeHeight(node.Left),
+                GetNodeHeight(node.Right)
+            );
 
             return node;
         }
@@ -160,6 +167,77 @@ namespace binary_search_tree
                     RCL(node.Left, ref log);
                 }
             }
+        }
+
+        private int GetNodeHeight(Node node)
+        {
+            if (node == null)
+            {
+                return -1;
+            }
+            return node.Height;
+        }
+        
+        private int GetBalance(Node node)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+
+            return GetNodeHeight(node.Left) - GetNodeHeight(node.Right);
+        }
+        
+        private Node RotateRight(Node node)
+        {
+            Node leftTemp = node.Left;
+
+            node.Left = leftTemp.Right;
+            leftTemp.Right = node;
+
+            node.Height = 1 + Math.Max(
+                GetNodeHeight(node.Left),
+                GetNodeHeight(node.Right)
+            );
+            leftTemp.Height = 1 + Math.Max(
+                GetNodeHeight(leftTemp.Left),
+                GetNodeHeight(leftTemp.Right)
+            );
+
+            return leftTemp;
+        }
+
+        private Node RotateLeft(Node node)
+        {
+            Node rightTemp = node.Right;
+
+            node.Right = rightTemp.Left;
+            rightTemp.Left = node;
+
+            node.Height = 1 + Math.Max(
+                GetNodeHeight(node.Left),
+                GetNodeHeight(node.Right)
+            );
+            rightTemp.Height = 1 + Math.Max(
+                GetNodeHeight(rightTemp.Left),
+                GetNodeHeight(rightTemp.Right)
+            );
+
+            return rightTemp;
+        }
+
+        private Node RotateLeftRight(Node node)
+        {
+            node.Left = RotateLeft(node.Left);
+
+            return RotateRight(node);
+        }
+
+        private Node RotateRightLeft(Node node)
+        {
+            node.Right = RotateRight(node.Right);
+
+            return RotateLeft(node);
         }
     }
 }

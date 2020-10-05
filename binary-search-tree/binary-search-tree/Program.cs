@@ -8,7 +8,7 @@ namespace binary_search_tree
         {
             BinarySearchTree bst = new BinarySearchTree();
             
-            int[] keys = { 20, 8, 22, 4, 12, 10, 14 }; 
+            int[] keys = { 20, 8, 22, 4, 12, 10, 14, 23, 21 }; 
   
             foreach (int key in keys)
             {
