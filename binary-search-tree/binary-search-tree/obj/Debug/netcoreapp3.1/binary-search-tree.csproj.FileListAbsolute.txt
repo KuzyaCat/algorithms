@@ -1,0 +1,12 @@
+/Users/alex/Fifth_semestr/algorithms/binary-search-tree/binary-search-tree/bin/Debug/netcoreapp3.1/binary-search-tree.deps.json
+/Users/alex/Fifth_semestr/algorithms/binary-search-tree/binary-search-tree/bin/Debug/netcoreapp3.1/binary-search-tree.runtimeconfig.json
+/Users/alex/Fifth_semestr/algorithms/binary-search-tree/binary-search-tree/bin/Debug/netcoreapp3.1/binary-search-tree.runtimeconfig.dev.json
+/Users/alex/Fifth_semestr/algorithms/binary-search-tree/binary-search-tree/bin/Debug/netcoreapp3.1/binary-search-tree.dll
+/Users/alex/Fifth_semestr/algorithms/binary-search-tree/binary-search-tree/bin/Debug/netcoreapp3.1/binary-search-tree.pdb
+/Users/alex/Fifth_semestr/algorithms/binary-search-tree/binary-search-tree/obj/Debug/netcoreapp3.1/binary-search-tree.csprojAssemblyReference.cache
+/Users/alex/Fifth_semestr/algorithms/binary-search-tree/binary-search-tree/obj/Debug/netcoreapp3.1/binary-search-tree.AssemblyInfoInputs.cache
+/Users/alex/Fifth_semestr/algorithms/binary-search-tree/binary-search-tree/obj/Debug/netcoreapp3.1/binary-search-tree.AssemblyInfo.cs
+/Users/alex/Fifth_semestr/algorithms/binary-search-tree/binary-search-tree/obj/Debug/netcoreapp3.1/binary-search-tree.csproj.CoreCompileInputs.cache
+/Users/alex/Fifth_semestr/algorithms/binary-search-tree/binary-search-tree/obj/Debug/netcoreapp3.1/binary-search-tree.dll
+/Users/alex/Fifth_semestr/algorithms/binary-search-tree/binary-search-tree/obj/Debug/netcoreapp3.1/binary-search-tree.pdb
+/Users/alex/Fifth_semestr/algorithms/binary-search-tree/binary-search-tree/obj/Debug/netcoreapp3.1/binary-search-tree.genruntimeconfig.cache
