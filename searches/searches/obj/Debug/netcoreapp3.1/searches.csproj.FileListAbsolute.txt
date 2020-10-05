@@ -1,0 +1,12 @@
+/Users/alex/Fifth_semestr/csharp/searches/searches/obj/Debug/netcoreapp3.1/searches.csprojAssemblyReference.cache
+/Users/alex/Fifth_semestr/csharp/searches/searches/obj/Debug/netcoreapp3.1/searches.AssemblyInfoInputs.cache
+/Users/alex/Fifth_semestr/csharp/searches/searches/obj/Debug/netcoreapp3.1/searches.AssemblyInfo.cs
+/Users/alex/Fifth_semestr/csharp/searches/searches/obj/Debug/netcoreapp3.1/searches.csproj.CoreCompileInputs.cache
+/Users/alex/Fifth_semestr/csharp/searches/searches/bin/Debug/netcoreapp3.1/searches.deps.json
+/Users/alex/Fifth_semestr/csharp/searches/searches/bin/Debug/netcoreapp3.1/searches.runtimeconfig.json
+/Users/alex/Fifth_semestr/csharp/searches/searches/bin/Debug/netcoreapp3.1/searches.runtimeconfig.dev.json
+/Users/alex/Fifth_semestr/csharp/searches/searches/bin/Debug/netcoreapp3.1/searches.dll
+/Users/alex/Fifth_semestr/csharp/searches/searches/bin/Debug/netcoreapp3.1/searches.pdb
+/Users/alex/Fifth_semestr/csharp/searches/searches/obj/Debug/netcoreapp3.1/searches.dll
+/Users/alex/Fifth_semestr/csharp/searches/searches/obj/Debug/netcoreapp3.1/searches.pdb
+/Users/alex/Fifth_semestr/csharp/searches/searches/obj/Debug/netcoreapp3.1/searches.genruntimeconfig.cache

@@ -1,0 +1,12 @@
+/Users/alex/Fifth_semestr/csharp/sorting/sorting/bin/Debug/netcoreapp3.1/sorting.deps.json
+/Users/alex/Fifth_semestr/csharp/sorting/sorting/bin/Debug/netcoreapp3.1/sorting.runtimeconfig.json
+/Users/alex/Fifth_semestr/csharp/sorting/sorting/bin/Debug/netcoreapp3.1/sorting.runtimeconfig.dev.json
+/Users/alex/Fifth_semestr/csharp/sorting/sorting/bin/Debug/netcoreapp3.1/sorting.dll
+/Users/alex/Fifth_semestr/csharp/sorting/sorting/bin/Debug/netcoreapp3.1/sorting.pdb
+/Users/alex/Fifth_semestr/csharp/sorting/sorting/obj/Debug/netcoreapp3.1/sorting.csprojAssemblyReference.cache
+/Users/alex/Fifth_semestr/csharp/sorting/sorting/obj/Debug/netcoreapp3.1/sorting.AssemblyInfoInputs.cache
+/Users/alex/Fifth_semestr/csharp/sorting/sorting/obj/Debug/netcoreapp3.1/sorting.AssemblyInfo.cs
+/Users/alex/Fifth_semestr/csharp/sorting/sorting/obj/Debug/netcoreapp3.1/sorting.csproj.CoreCompileInputs.cache
+/Users/alex/Fifth_semestr/csharp/sorting/sorting/obj/Debug/netcoreapp3.1/sorting.dll
+/Users/alex/Fifth_semestr/csharp/sorting/sorting/obj/Debug/netcoreapp3.1/sorting.pdb
+/Users/alex/Fifth_semestr/csharp/sorting/sorting/obj/Debug/netcoreapp3.1/sorting.genruntimeconfig.cache
