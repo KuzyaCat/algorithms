@@ -58,11 +58,18 @@ namespace binary_search_tree
             {
                 node.Right = Insert(node.Right, data);
             }
-            
-            node.Height = 1 + Math.Max(
-                GetNodeHeight(node.Left),
-                GetNodeHeight(node.Right)
-            );
+
+            if (node.Left == null && node.Right == null)
+            {
+                node.Height = 0;
+            }
+            else
+            {
+                node.Height = 1 + Math.Max(
+                    GetNodeHeight(node.Left),
+                    GetNodeHeight(node.Right)
+                );
+            }
 
             return node;
         }
@@ -171,21 +178,12 @@ namespace binary_search_tree
 
         private int GetNodeHeight(Node node)
         {
-            if (node == null)
-            {
-                return -1;
-            }
-            return node.Height;
+            return node == null ? 0 : node.Height;
         }
         
         private int GetBalance(Node node)
         {
-            if (node == null)
-            {
-                return 0;
-            }
-
-            return GetNodeHeight(node.Left) - GetNodeHeight(node.Right);
+            return node == null ? 0 : GetNodeHeight(node.Left) - GetNodeHeight(node.Right);
         }
         
         private Node RotateRight(Node node)

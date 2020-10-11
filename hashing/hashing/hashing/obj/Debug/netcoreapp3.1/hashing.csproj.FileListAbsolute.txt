@@ -1,0 +1,12 @@
+/Users/alex/Fifth_semestr/algorithms/hashing/hashing/hashing/bin/Debug/netcoreapp3.1/hashing.deps.json
+/Users/alex/Fifth_semestr/algorithms/hashing/hashing/hashing/bin/Debug/netcoreapp3.1/hashing.runtimeconfig.json
+/Users/alex/Fifth_semestr/algorithms/hashing/hashing/hashing/bin/Debug/netcoreapp3.1/hashing.runtimeconfig.dev.json
+/Users/alex/Fifth_semestr/algorithms/hashing/hashing/hashing/bin/Debug/netcoreapp3.1/hashing.dll
+/Users/alex/Fifth_semestr/algorithms/hashing/hashing/hashing/bin/Debug/netcoreapp3.1/hashing.pdb
+/Users/alex/Fifth_semestr/algorithms/hashing/hashing/hashing/obj/Debug/netcoreapp3.1/hashing.csprojAssemblyReference.cache
+/Users/alex/Fifth_semestr/algorithms/hashing/hashing/hashing/obj/Debug/netcoreapp3.1/hashing.AssemblyInfoInputs.cache
+/Users/alex/Fifth_semestr/algorithms/hashing/hashing/hashing/obj/Debug/netcoreapp3.1/hashing.AssemblyInfo.cs
+/Users/alex/Fifth_semestr/algorithms/hashing/hashing/hashing/obj/Debug/netcoreapp3.1/hashing.csproj.CoreCompileInputs.cache
+/Users/alex/Fifth_semestr/algorithms/hashing/hashing/hashing/obj/Debug/netcoreapp3.1/hashing.dll
+/Users/alex/Fifth_semestr/algorithms/hashing/hashing/hashing/obj/Debug/netcoreapp3.1/hashing.pdb
+/Users/alex/Fifth_semestr/algorithms/hashing/hashing/hashing/obj/Debug/netcoreapp3.1/hashing.genruntimeconfig.cache

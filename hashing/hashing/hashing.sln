@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hashing", "hashing\hashing.csproj", "{931D1ED3-5967-49CE-84AD-A0FA74A2CEED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{931D1ED3-5967-49CE-84AD-A0FA74A2CEED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{931D1ED3-5967-49CE-84AD-A0FA74A2CEED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{931D1ED3-5967-49CE-84AD-A0FA74A2CEED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{931D1ED3-5967-49CE-84AD-A0FA74A2CEED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
