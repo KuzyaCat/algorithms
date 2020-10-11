@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hashing", "hashing\hashing.csproj", "{931D1ED3-5967-49CE-84AD-A0FA74A2CEED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hashing", "hashing\hashing.csproj", "{9B638858-BE6C-4E57-81AA-AA217A62BB6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +8,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{931D1ED3-5967-49CE-84AD-A0FA74A2CEED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{931D1ED3-5967-49CE-84AD-A0FA74A2CEED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{931D1ED3-5967-49CE-84AD-A0FA74A2CEED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{931D1ED3-5967-49CE-84AD-A0FA74A2CEED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B638858-BE6C-4E57-81AA-AA217A62BB6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B638858-BE6C-4E57-81AA-AA217A62BB6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B638858-BE6C-4E57-81AA-AA217A62BB6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B638858-BE6C-4E57-81AA-AA217A62BB6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

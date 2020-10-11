@@ -9,7 +9,7 @@ namespace hashing
         private LinkedList<int>[] hashTable;
         private int currentSize;
         private int tableSize;
-        private const int PRIME_NUMBER = 13;
+        private const int PRIME_NUMBER = 7;
         private double KNUTH_CONST = (Math.Sqrt(5) + 1) / 2;
 
         public Hashing(int size)
@@ -25,12 +25,12 @@ namespace hashing
 
         private bool IsFull()
         {
-            return currentSize == tableSize;
+            return currentSize >= tableSize;
         }
         
         private int MultiplicationHash(int key)
         {
-            return (int)Math.Floor(tableSize * (key * KNUTH_CONST - Math.Floor(key * KNUTH_CONST)));
+            return (int) Math.Floor(tableSize * (key * KNUTH_CONST - Math.Floor(key * KNUTH_CONST)));
         }
 
         private int SecondHash(int key)
@@ -62,8 +62,11 @@ namespace hashing
             if (IsFull())
             {
                 hashTable[index].AddLast(key);
+                currentSize += 1;
                 return;
             }
+            
+            Console.WriteLine("IsFull()" + IsFull());
             
             if (hashTable[index].Count != 0) { 
                 int secondIndex = SecondHash(key); 
@@ -71,11 +74,11 @@ namespace hashing
                 while (true) { 
                     int newIndex = (index + i * secondIndex) % tableSize; 
   
-                    if (hashTable[newIndex].Count == 0) { 
+                    if (hashTable[newIndex].Count == 0) {
                         hashTable[newIndex].AddLast(key); 
                         break; 
                     } 
-                    i++; 
+                    i += 1;
                 } 
             }
             else
@@ -90,6 +93,7 @@ namespace hashing
             if (IsFull())
             {
                 hashTable[index].AddLast(key);
+                currentSize += 1;
                 return;
             }
             
