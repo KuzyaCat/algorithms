@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/alex/Fifth_semestr/algorithms/hashing/hashing/hashing/hashing.csproj",
+      "projectUniqueName": "/Users/alex/Fifth_semestr/algorithms/hashing/hashing/hashing.csproj",
       "projectName": "hashing",
-      "projectPath": "/Users/alex/Fifth_semestr/algorithms/hashing/hashing/hashing/hashing.csproj",
+      "projectPath": "/Users/alex/Fifth_semestr/algorithms/hashing/hashing/hashing.csproj",
       "packagesPath": "/Users/alex/.nuget/packages/",
-      "outputPath": "/Users/alex/Fifth_semestr/algorithms/hashing/hashing/hashing/obj/",
+      "outputPath": "/Users/alex/Fifth_semestr/algorithms/hashing/hashing/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/alex/.nuget/NuGet/NuGet.Config"
