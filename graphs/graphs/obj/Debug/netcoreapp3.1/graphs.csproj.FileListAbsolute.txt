@@ -1,0 +1,12 @@
+/Users/alex/Fifth_semestr/algorithms/graphs/graphs/bin/Debug/netcoreapp3.1/graphs.deps.json
+/Users/alex/Fifth_semestr/algorithms/graphs/graphs/bin/Debug/netcoreapp3.1/graphs.runtimeconfig.json
+/Users/alex/Fifth_semestr/algorithms/graphs/graphs/bin/Debug/netcoreapp3.1/graphs.runtimeconfig.dev.json
+/Users/alex/Fifth_semestr/algorithms/graphs/graphs/bin/Debug/netcoreapp3.1/graphs.dll
+/Users/alex/Fifth_semestr/algorithms/graphs/graphs/bin/Debug/netcoreapp3.1/graphs.pdb
+/Users/alex/Fifth_semestr/algorithms/graphs/graphs/obj/Debug/netcoreapp3.1/graphs.csprojAssemblyReference.cache
+/Users/alex/Fifth_semestr/algorithms/graphs/graphs/obj/Debug/netcoreapp3.1/graphs.AssemblyInfoInputs.cache
+/Users/alex/Fifth_semestr/algorithms/graphs/graphs/obj/Debug/netcoreapp3.1/graphs.AssemblyInfo.cs
+/Users/alex/Fifth_semestr/algorithms/graphs/graphs/obj/Debug/netcoreapp3.1/graphs.csproj.CoreCompileInputs.cache
+/Users/alex/Fifth_semestr/algorithms/graphs/graphs/obj/Debug/netcoreapp3.1/graphs.dll
+/Users/alex/Fifth_semestr/algorithms/graphs/graphs/obj/Debug/netcoreapp3.1/graphs.pdb
+/Users/alex/Fifth_semestr/algorithms/graphs/graphs/obj/Debug/netcoreapp3.1/graphs.genruntimeconfig.cache

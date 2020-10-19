@@ -15,7 +15,7 @@ namespace hashing
                 int randomValue = 0;
                 while (randomValues.Contains(randomValue))
                 {
-                    randomValue = randomNumber.Next(-1, maxRangeValue);
+                    randomValue = randomNumber.Next(1, maxRangeValue);
                 }
                 randomValues[i] = randomValue;
             }
