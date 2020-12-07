@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace graphs
 {
@@ -33,7 +34,8 @@ namespace graphs
                 return new IGraph[]
                 {
                     new EulerGraph(nodesDenotation, graphMatrix, length),
-                    new BipartiteGraph(nodesDenotation, graphMatrix)
+                    new BipartiteGraph(nodesDenotation, graphMatrix),
+                    new ConnectedGraph(nodesDenotation, graphMatrix) 
                 };
             }
             catch
@@ -42,55 +44,15 @@ namespace graphs
                 return null;
             }
         }
-        
+
         private static IGraph[] GetHardcodedData()
         {
-            char[] nodesDenotation = {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
-            int[,] trueEulerGraphMatrix = 
-            {
-                {0, 1, 0, 0, 0, 0, 1},
-                {1, 0, 1, 1, 0, 0, 1},
-                {0, 1, 0, 1, 1, 1, 0},
-                {0, 1, 1, 0, 0, 1, 1},
-                {0, 0, 1, 0, 0, 1, 0},
-                {0, 0, 1, 1, 1, 0, 1},
-                {1, 1, 0, 1, 0, 1, 0}
-            };
-            int[,] notEulerGraphMatrix = 
-            {
-                {0, 1, 0, 1, 0, 0, 1},
-                {1, 0, 1, 1, 0, 0, 1},
-                {0, 1, 0, 1, 1, 1, 0},
-                {0, 1, 1, 0, 0, 1, 1},
-                {0, 0, 1, 0, 0, 1, 0},
-                {0, 0, 1, 1, 1, 0, 1},
-                {1, 1, 0, 1, 0, 1, 0}
-            };
-            int[,] trueBipartiteGraph =
-            {
-                {0, 1, 0, 0, 1, 0, 0},
-                {1, 0, 1, 1, 0, 0, 0},
-                {0, 1, 0, 0, 1, 1, 0},
-                {0, 1, 0, 0, 1, 0, 0},
-                {1, 0, 1, 1, 0, 0, 1},
-                {0, 0, 1, 0, 0, 0, 1},
-                {0, 0, 0, 0, 1, 1, 0}
-            };
-            int[,] notBipartiteGraph =
-            {
-                {0, 1, 0, 0, 1, 0, 0},
-                {1, 0, 1, 1, 1, 0, 0},
-                {0, 1, 0, 0, 1, 1, 0},
-                {0, 1, 0, 0, 1, 0, 0},
-                {1, 1, 1, 1, 1, 1, 1},
-                {0, 0, 1, 0, 1, 0, 1},
-                {0, 0, 0, 0, 1, 1, 0}
-            };
-            
+            char[] nodesDenotation = {'1', '2', '3', '4', '5', '6', '7'};
             return new IGraph[]
             {
-                new EulerGraph(nodesDenotation, trueEulerGraphMatrix, 7),
-                new BipartiteGraph(nodesDenotation, trueBipartiteGraph)
+                new EulerGraph(nodesDenotation, GraphSamples.TrueEulerGraphMatrix, nodesDenotation.Length),
+                new BipartiteGraph(nodesDenotation, GraphSamples.TrueBipartiteGraph),
+                new ConnectedGraph(nodesDenotation, GraphSamples.ThreeComponentsGraph), 
             };
         }
         
@@ -98,10 +60,15 @@ namespace graphs
         
         static void Main(string[] args)
         {
-            EulerGraph graph = (EulerGraph)GetHardcodedData()[0];
-            BipartiteGraph bipartiteGraph = (BipartiteGraph) GetHardcodedData()[1];
-            graph.GetEulerCycle();
+            // EulerGraph eulerGraph = (EulerGraph)GetHardcodedData()[0];
+            // BipartiteGraph bipartiteGraph = (BipartiteGraph) GetHardcodedData()[1];
+            
+            // eulerGraph.GetEulerCycle();
             // bipartiteGraph.BipartiteGraphPartsSearch();
+            
+            ConnectedGraph connectedGraph = (ConnectedGraph)GetHardcodedData()[2];
+            List<List<char>> components = connectedGraph.GetComponents();
+            connectedGraph.PrintComponents(components);
         }
     }
 }

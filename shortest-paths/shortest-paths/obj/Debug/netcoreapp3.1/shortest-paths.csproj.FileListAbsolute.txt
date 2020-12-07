@@ -1,0 +1,12 @@
+/Users/alex/Fifth_semestr/algorithms/shortest-paths/shortest-paths/bin/Debug/netcoreapp3.1/shortest-paths.deps.json
+/Users/alex/Fifth_semestr/algorithms/shortest-paths/shortest-paths/bin/Debug/netcoreapp3.1/shortest-paths.runtimeconfig.json
+/Users/alex/Fifth_semestr/algorithms/shortest-paths/shortest-paths/bin/Debug/netcoreapp3.1/shortest-paths.runtimeconfig.dev.json
+/Users/alex/Fifth_semestr/algorithms/shortest-paths/shortest-paths/bin/Debug/netcoreapp3.1/shortest-paths.dll
+/Users/alex/Fifth_semestr/algorithms/shortest-paths/shortest-paths/bin/Debug/netcoreapp3.1/shortest-paths.pdb
+/Users/alex/Fifth_semestr/algorithms/shortest-paths/shortest-paths/obj/Debug/netcoreapp3.1/shortest-paths.csprojAssemblyReference.cache
+/Users/alex/Fifth_semestr/algorithms/shortest-paths/shortest-paths/obj/Debug/netcoreapp3.1/shortest-paths.AssemblyInfoInputs.cache
+/Users/alex/Fifth_semestr/algorithms/shortest-paths/shortest-paths/obj/Debug/netcoreapp3.1/shortest-paths.AssemblyInfo.cs
+/Users/alex/Fifth_semestr/algorithms/shortest-paths/shortest-paths/obj/Debug/netcoreapp3.1/shortest-paths.csproj.CoreCompileInputs.cache
+/Users/alex/Fifth_semestr/algorithms/shortest-paths/shortest-paths/obj/Debug/netcoreapp3.1/shortest-paths.dll
+/Users/alex/Fifth_semestr/algorithms/shortest-paths/shortest-paths/obj/Debug/netcoreapp3.1/shortest-paths.pdb
+/Users/alex/Fifth_semestr/algorithms/shortest-paths/shortest-paths/obj/Debug/netcoreapp3.1/shortest-paths.genruntimeconfig.cache

@@ -14,8 +14,8 @@ namespace hashing
             {
                 int randomValue = 0;
                 while (randomValues.Contains(randomValue))
-                {
-                    randomValue = randomNumber.Next(1, maxRangeValue);
+                { 
+                    randomValue = randomNumber.Next(-1, maxRangeValue);
                 }
                 randomValues[i] = randomValue;
             }
@@ -42,14 +42,23 @@ namespace hashing
             int[] inputData = GetInputData();
             int[] values = GenerateRandomValues(inputData[1], inputData[2]);
 
-            Hashing hashTable = new Hashing(inputData[0]);
+            Hashing hashTable1 = new Hashing(inputData[0]);
+            Hashing hashTable2 = new Hashing(inputData[0]);
 
             for (int i = 0; i < values.Length; i += 1)
             {
-                hashTable.Insert(values[i]);
+                hashTable1.Insert(values[i]);
             }
+            hashTable1.DisplayHash();
             
-            hashTable.DisplayHash();
+            Console.WriteLine("========================");
+            Console.WriteLine("My Knuth const:");
+            
+            for (int i = 0; i < values.Length; i += 1)
+            {
+                hashTable2.Insert(values[i], true);
+            }
+            hashTable2.DisplayHash();
         }
 
         static void Main(string[] args)

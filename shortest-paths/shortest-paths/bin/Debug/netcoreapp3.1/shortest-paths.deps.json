@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "shortest-paths/1.0.0": {
+        "runtime": {
+          "shortest-paths.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "shortest-paths/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

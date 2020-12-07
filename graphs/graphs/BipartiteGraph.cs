@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Drawing;
 
 namespace graphs
 {
@@ -32,16 +33,20 @@ namespace graphs
         }
         
         private bool BipartiteGraphPartsSearch(int index, int currentNodeColor) {
-            Colors[index] = currentNodeColor;
+            if (Colors[index] == 0)
+            {
+                Colors[index] = currentNodeColor;
+            }
 
             for (int i = 0; i < NodesDenotation.Length; i += 1)
             {
+                if (GraphMatrix[index, i] == 1 && Colors[i] == Colors[index])
+                {
+                    return false;
+                }
                 if (Colors[i] == 0 && GraphMatrix[index, i] == 1)
                 {
                     BipartiteGraphPartsSearch(i, InvertColor(currentNodeColor));
-                } else if (GraphMatrix[index, i] == 1 && Colors[i] == currentNodeColor)
-                {
-                    return false;
                 }
             }
 
@@ -82,7 +87,17 @@ namespace graphs
 
         public void BipartiteGraphPartsSearch()
         {
-            bool isBipartiteGraph = BipartiteGraphPartsSearch(0, 1);
+            bool isBipartiteGraph = true;
+            
+            for (int i = 0; i < NodesDenotation.Length; i += 1)
+            {
+                isBipartiteGraph = BipartiteGraphPartsSearch(i, 1);
+
+                if (!isBipartiteGraph)
+                {
+                    break;
+                }
+            }
 
             if (isBipartiteGraph)
             {

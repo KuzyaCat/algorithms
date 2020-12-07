@@ -29,49 +29,53 @@ namespace binary_search_tree
         {
             return _length;
         }
-
-        public Node Insert(int data)
+        
+        public void Insert(int data)
         {
+            if (_length == 0)
+            {
+                _root.data = data;
+                return;
+            }
+            
+            Node currentNode = _root;
             _length += 1;
-            
-            if (_root == null)
-            {
-                _root = new Node(data);
-                return _root;
-            }
-            
-            return Insert(_root, data);
-        }
 
-        private Node Insert(Node node, int data)
-        {
-            if (node == null)
+            while (true)
             {
-                return new Node(data);
+                if (data <= currentNode.data)
+                {
+                    if (currentNode.Left != null)
+                    {
+                        currentNode.LeftCount += 1;
+                        currentNode = currentNode.Left;
+                    }
+                    else
+                    {
+                        Node newNode = new Node(data);
+                        currentNode.LeftCount += 1;
+                        currentNode.Left = newNode;
+                        newNode.Parent = currentNode;
+                        break;
+                    }
+                }
+                else
+                {
+                    if (currentNode.Right != null)
+                    {
+                        currentNode.RightCount += 1;
+                        currentNode = currentNode.Right;
+                    }
+                    else
+                    {
+                        Node newNode = new Node(data);
+                        currentNode.RightCount += 1;
+                        currentNode.Right = newNode;
+                        newNode.Parent = currentNode;
+                        break;
+                    }
+                }
             }
-            if (data < node.data)
-            {
-                node.Left = Insert(node.Left, data);
-                node.LeftCount += 1;
-            }
-            else if (data > node.data)
-            {
-                node.Right = Insert(node.Right, data);
-            }
-
-            if (node.Left == null && node.Right == null)
-            {
-                node.Height = 0;
-            }
-            else
-            {
-                node.Height = 1 + Math.Max(
-                    GetNodeHeight(node.Left),
-                    GetNodeHeight(node.Right)
-                );
-            }
-
-            return node;
         }
 
         public Node KthSmallest(int k)
@@ -98,6 +102,26 @@ namespace binary_search_tree
             }
             return KthSmallest(node.Right, k - count);
         }
+        
+        private int HeightFromNodeToNode(Node startingNode, Node endingNode)
+        {
+            Node node = startingNode;
+            int height = 0;
+            while (node.data != endingNode.data)
+            {
+                height++;
+                if (endingNode.data <= node.data)
+                {
+                    node = node.Left;
+                }
+                else
+                {
+                    node = node.Right;
+                }
+            }
+
+            return height;
+        }
 
         public override string ToString()
         {
@@ -107,6 +131,24 @@ namespace binary_search_tree
             }
 
             return "Length: " + _length.ToString() + '\n' + _root.ToString();
+        }
+        
+        private int GetHeight(Node node)
+        {
+            if (node != null)
+            {
+                int leftSubtreeHeight = GetHeight(node.Left);
+                int rightSubtreeHeight = GetHeight(node.Right);
+
+                if (leftSubtreeHeight > rightSubtreeHeight)
+                {
+                    return (leftSubtreeHeight + 1);
+                }
+
+                return (rightSubtreeHeight + 1);
+            }
+            
+            return 0;
         }
 
         public string LCR()
@@ -176,66 +218,116 @@ namespace binary_search_tree
             }
         }
 
-        private int GetNodeHeight(Node node)
+        private void RotateLeft(Node mainNode)
         {
-            return node == null ? 0 : node.Height;
+            Node rightNode = mainNode.Right;
+            Node parent = mainNode.Parent;
+            if (rightNode != null)
+            {
+                Node leftChildOfRightNode = rightNode.Left;
+                int leftCount = mainNode.LeftCount;
+                int leftCountOfRight = rightNode.LeftCount;
+                if (parent != null)
+                {
+                    if (mainNode.data > parent.data)
+                    {
+                        parent.Right = rightNode;
+                    }
+                    else
+                    {
+                        parent.Left = rightNode;
+                    }
+                }
+
+                mainNode.Parent = rightNode;
+                mainNode.Right = leftChildOfRightNode;
+                mainNode.RightCount = leftCountOfRight;
+                
+                rightNode.Parent = parent;
+                rightNode.Left = mainNode;
+                rightNode.LeftCount = leftCount + leftCountOfRight + 1;
+
+                if (leftChildOfRightNode != null)
+                {
+                    leftChildOfRightNode.Parent = mainNode;
+                }
+
+                if (parent == null)
+                {
+                    _root = rightNode;
+                }
+            }
+        }
+
+        private void RotateRight(Node mainNode)
+        {
+            Node leftNode = mainNode.Left;
+            Node parent = mainNode.Parent;
+            if (leftNode != null)
+            {
+                Node rightChildOfLeftNode = leftNode.Right;
+                int rightCount = mainNode.RightCount;
+                int rightCountOfLeftNode = leftNode.RightCount;
+                if (parent != null)
+                {
+                    if (mainNode.data > parent.data)
+                    {
+                        parent.Right = leftNode;
+                    }
+                    else
+                    {
+                        parent.Left = leftNode;
+                    }
+                }
+
+                mainNode.Parent = leftNode;
+                mainNode.Left = rightChildOfLeftNode;
+                mainNode.LeftCount = rightCountOfLeftNode;
+                
+                leftNode.Parent = parent;
+                leftNode.Right = mainNode;
+                leftNode.RightCount = rightCount + rightCountOfLeftNode + 1;
+
+                if (rightChildOfLeftNode != null)
+                {
+                    rightChildOfLeftNode.Parent = mainNode;
+                }
+
+                if (parent == null)
+                {
+                    _root = leftNode;
+                }
+            }
+        }
+
+        public void Balance()
+        {
+            Balance(_root);   
         }
         
-        private int GetBalance(Node node)
+        private void Balance(Node node)
         {
-            return node == null ? 0 : GetNodeHeight(node.Left) - GetNodeHeight(node.Right);
-        }
-        
-        private Node RotateRight(Node node)
-        {
-            Node leftTemp = node.Left;
+            double middleK = Math.Ceiling((node.LeftCount + node.RightCount + 1) * 0.5);
+            Node middleNode = KthSmallest(node, (int) middleK);
+            int heightFromNodeToMiddleNode = HeightFromNodeToNode(node, middleNode);
+            
+            for (int i = 0; i < heightFromNodeToMiddleNode; i++)
+            {
+                if (middleNode.data <= middleNode.Parent.data)
+                {
 
-            node.Left = leftTemp.Right;
-            leftTemp.Right = node;
-
-            node.Height = 1 + Math.Max(
-                GetNodeHeight(node.Left),
-                GetNodeHeight(node.Right)
-            );
-            leftTemp.Height = 1 + Math.Max(
-                GetNodeHeight(leftTemp.Left),
-                GetNodeHeight(leftTemp.Right)
-            );
-
-            return leftTemp;
-        }
-
-        private Node RotateLeft(Node node)
-        {
-            Node rightTemp = node.Right;
-
-            node.Right = rightTemp.Left;
-            rightTemp.Left = node;
-
-            node.Height = 1 + Math.Max(
-                GetNodeHeight(node.Left),
-                GetNodeHeight(node.Right)
-            );
-            rightTemp.Height = 1 + Math.Max(
-                GetNodeHeight(rightTemp.Left),
-                GetNodeHeight(rightTemp.Right)
-            );
-
-            return rightTemp;
-        }
-
-        private Node RotateLeftRight(Node node)
-        {
-            node.Left = RotateLeft(node.Left);
-
-            return RotateRight(node);
-        }
-
-        private Node RotateRightLeft(Node node)
-        {
-            node.Right = RotateRight(node.Right);
-
-            return RotateLeft(node);
+                    RotateRight(middleNode.Parent);
+                }
+                else
+                {
+                    RotateLeft(middleNode.Parent);
+                }
+            }
+            if (middleNode.Left != null && middleNode.Right != null)
+            {
+                Balance(middleNode.Left);
+                Balance(middleNode.Right);
+            }
         }
     }
 }

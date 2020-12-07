@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,8 +13,9 @@ namespace shortest_paths
         public Floyd(int nodesCount, int[][] matrix)
         {
             NodesCount = nodesCount;
-            Matrix = GetPathsMatrix(nodesCount, matrix).Item1;
-            Paths = GetPathsMatrix(nodesCount, matrix).Item2;
+            (int[][], int[][]) PathsMatrix = GetPathsMatrix(nodesCount, matrix);
+            Matrix = PathsMatrix.Item1;
+            Paths = PathsMatrix.Item2;
         }
 
         private (int[][], int[][]) GetPathsMatrix(int nodesCount, int[][] matrix)
@@ -26,12 +28,14 @@ namespace shortest_paths
             {
                 int[] indexesWithoutCurrent = indexes.Where(index => index != i).ToArray();
 
-                for (int rowIndex = indexesWithoutCurrent[0]; rowIndex < indexesWithoutCurrent.Length; rowIndex += 1)
+                for (int j = 0; j < indexesWithoutCurrent.Length; j += 1)
                 {
-                    for (int columnIndex = indexesWithoutCurrent[0];
-                        columnIndex < indexesWithoutCurrent.LongLength;
-                        columnIndex += 1)
+                    int rowIndex = indexesWithoutCurrent[j];
+                        
+                    for (int k = 0; k < indexesWithoutCurrent.Length; k += 1)
                     {
+                        int columnIndex = indexesWithoutCurrent[k];
+                            
                         int newWeight = matrix[rowIndex][i] + matrix[i][columnIndex];
 
                         if (newWeight < matrix[rowIndex][columnIndex])
@@ -44,7 +48,76 @@ namespace shortest_paths
             }
 
             return (floydMatrix, paths);
-    }
+        }
+
+        private void AddNodeToPath(ref List<int[]> path, int[] edge, int index)
+        {
+            int nodeToAdd = Paths[edge[0]][edge[1]];
+            
+            path.RemoveAt(index);
+            path.Insert(index, new []{edge[0], nodeToAdd});
+            path.Insert(index + 1, new []{nodeToAdd, edge[1]});
+        }
+
+        private List<int[]> RefreshPath(ref List<int[]> path)
+        {
+            bool toUpdate = false;
+
+            for (int i = 0; i < path.Count; i += 1)
+            {
+                int[] edge = path.ElementAt(i);
+
+                if (!(Paths[edge[0]][edge[1]] == edge[1]))
+                {
+                    AddNodeToPath(ref path, edge, i);
+                    toUpdate = true;
+                }
+            }
+
+            if (toUpdate)
+            {
+                return RefreshPath(ref path);
+            }
+
+            return path;
+        }
+
+        public List<int[]> GetPathBetweenNodes(int startNodeIndex, int endNodeIndex)
+        {
+            List<int[]> initialPath = new List<int[]>();
+            initialPath.Add(new int[] {startNodeIndex, endNodeIndex});
+            List<int[]> path = RefreshPath(ref initialPath);
+
+            return path;
+        }
+
+        public int GetDistanceBetweenNodes(int startNode, int endNode)
+        {
+            return Matrix[startNode][endNode];
+        }
+
+        public int GetDistanceToFarthestNode(int nodeIndex)
+        {
+            int[] anotherNodesIndexes = GetIndexes(NodesCount).Where(index => index != nodeIndex).ToArray();
+            List<int> distancesToAnotherNodes = new List<int>();
+            for (int i = 0; i < anotherNodesIndexes.Length; i += 1)
+            {
+                distancesToAnotherNodes.Add(GetDistanceBetweenNodes(nodeIndex, anotherNodesIndexes[i]));
+            }
+
+            return distancesToAnotherNodes.Max();
+        }
+
+        public int GetOptimalCenterNode()
+        {
+            List<int> farthestDistances = new List<int>();
+            for (int i = 0; i < NodesCount; i += 1)
+            {
+                farthestDistances.Add(GetDistanceToFarthestNode(i));
+            }
+
+            return farthestDistances.IndexOf(farthestDistances.Min());
+        }
 
         private int[][] GetInitialPathMatrix(int nodesCount)
         {

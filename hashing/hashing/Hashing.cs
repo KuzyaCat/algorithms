@@ -11,6 +11,12 @@ namespace hashing
         private int tableSize;
         private const int PRIME_NUMBER = 7;
         private double KNUTH_CONST = (Math.Sqrt(5) + 1) / 2;
+        // private double MY_KNUTH_CONST = (Math.Sqrt(3) + 1) / 2;
+        private double MY_KNUTH_CONST = (
+            2 +
+            Math.Pow(116 + 12 * Math.Sqrt(93), 1.0 / 3) +
+            Math.Pow(116 - 12 * Math.Sqrt(93), 1.0 / 3)
+            ) / 6; // 1,47
 
         public Hashing(int size)
         {
@@ -28,33 +34,15 @@ namespace hashing
             return currentSize >= tableSize;
         }
         
-        private int MultiplicationHash(int key)
+        private int MultiplicationHash(int key, bool useOwnConst = false)
         {
-            return (int) Math.Floor(tableSize * (key * KNUTH_CONST - Math.Floor(key * KNUTH_CONST)));
+            double MULTIPLY_CONSTANT = useOwnConst ? MY_KNUTH_CONST : KNUTH_CONST;
+            return (int) Math.Floor(tableSize * (key * MULTIPLY_CONSTANT - Math.Floor(key * MULTIPLY_CONSTANT)));
         }
 
         private int SecondHash(int key)
         {
             return (PRIME_NUMBER - (key % PRIME_NUMBER)); 
-        }
-        
-        public void DisplayHash() 
-        {
-            for (int i = 0; i < tableSize; i++) {
-                if (hashTable[i].Count != 0)
-                {
-                    Console.Write(i);
-                    for (int j = 0; j < hashTable[i].Count; j += 1)
-                    {
-                        Console.Write(" ---> " + hashTable[i].ElementAt(j));
-                    }
-                    Console.WriteLine();
-                }
-                else
-                {
-                    Console.WriteLine(i);
-                }
-            } 
         }
 
         private void DoubleHashing(int index, int key)
@@ -66,10 +54,9 @@ namespace hashing
                 return;
             }
             
-            Console.WriteLine("IsFull()" + IsFull());
-            
+            int secondIndex = SecondHash(key);
+
             if (hashTable[index].Count != 0) { 
-                int secondIndex = SecondHash(key); 
                 int i = 1; 
                 while (true) { 
                     int newIndex = (index + i * secondIndex) % tableSize; 
@@ -119,12 +106,31 @@ namespace hashing
             hashTable[index].AddLast(key);
         }
         
-        public void Insert(int key)
+        public void Insert(int key, bool UseOwnConst = false)
         {
-            int index = MultiplicationHash(key);
+            int index = MultiplicationHash(key, UseOwnConst);
             DoubleHashing(index, key);
             // LinearProbling(index, key);
             // Chaining(index, key);
+        }
+        
+        public void DisplayHash() 
+        {
+            for (int i = 0; i < tableSize; i++) {
+                if (hashTable[i].Count != 0)
+                {
+                    Console.Write(i);
+                    for (int j = 0; j < hashTable[i].Count; j += 1)
+                    {
+                        Console.Write(" ---> " + hashTable[i].ElementAt(j));
+                    }
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.WriteLine(i);
+                }
+            } 
         }
     }
 }
