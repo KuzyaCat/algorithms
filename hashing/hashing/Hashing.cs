@@ -11,7 +11,6 @@ namespace hashing
         private int tableSize;
         private const int PRIME_NUMBER = 7;
         private double KNUTH_CONST = (Math.Sqrt(5) + 1) / 2;
-        // private double MY_KNUTH_CONST = (Math.Sqrt(3) + 1) / 2;
         private double MY_KNUTH_CONST = (
             2 +
             Math.Pow(116 + 12 * Math.Sqrt(93), 1.0 / 3) +

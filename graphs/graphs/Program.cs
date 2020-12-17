@@ -60,11 +60,11 @@ namespace graphs
         
         static void Main(string[] args)
         {
-            // EulerGraph eulerGraph = (EulerGraph)GetHardcodedData()[0];
-            // BipartiteGraph bipartiteGraph = (BipartiteGraph) GetHardcodedData()[1];
+            EulerGraph eulerGraph = (EulerGraph)GetHardcodedData()[0];
+            BipartiteGraph bipartiteGraph = (BipartiteGraph) GetHardcodedData()[1];
             
-            // eulerGraph.GetEulerCycle();
-            // bipartiteGraph.BipartiteGraphPartsSearch();
+            eulerGraph.GetEulerCycle();
+            bipartiteGraph.BipartiteGraphPartsSearch();
             
             ConnectedGraph connectedGraph = (ConnectedGraph)GetHardcodedData()[2];
             List<List<char>> components = connectedGraph.GetComponents();
