@@ -17,7 +17,7 @@ namespace minimum_spanning_tree
 
                 if (possibleEdges.Count > 0)
                 {
-                    Edge nextEdge = GetMinimumByWeightEdge();
+                    Edge nextEdge = GetMinimumByWeightEdge(Edges);
                     nextEdge.ToVisit = false;
                     minimumSpanningTreeEdges.Add(nextEdge);
                 }
@@ -42,15 +42,6 @@ namespace minimum_spanning_tree
             return unvisitedEdges
                 .Where(edge => edge.GetStartNode().IsFormCycle(edge.GetEndNode(), Edges))
                 .ToList();
-        }
-
-        private Edge GetMinimumByWeightEdge()
-        {
-            List<int> edgesWeights = Edges.Select(edge => edge.GetWeight()).ToList();
-            int minimumWeightEdge = edgesWeights.Min();
-            int minimumWeightEdgeIndex = edgesWeights.IndexOf(minimumWeightEdge);
-            
-            return Edges.ElementAt(minimumWeightEdgeIndex);
         }
     }
 }

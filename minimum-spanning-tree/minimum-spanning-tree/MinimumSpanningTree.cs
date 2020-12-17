@@ -1,11 +1,17 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace minimum_spanning_tree
 {
     public class MinimumSpanningTree
     {
         private int NodesCount = 0;
-        private List<Node> Nodes = new List<Node>();
+
+        protected List<Node> Nodes
+        {
+            get;
+            set;
+        }
         protected List<Edge> Edges
         {
             get;
@@ -15,6 +21,8 @@ namespace minimum_spanning_tree
         protected MinimumSpanningTree(int[,] weightMatrix)
         {
             NodesCount = weightMatrix.Length;
+            Edges = new List<Edge>();
+            Nodes = new List<Node>();
 
             for (int i = 0; i < weightMatrix.Length; i += 1)
             {
@@ -32,6 +40,15 @@ namespace minimum_spanning_tree
                     Edges.Add(edge);
                 }
             }
+        }
+        
+        protected Edge GetMinimumByWeightEdge(List<Edge> edges)
+        {
+            List<int> edgesWeights = edges.Select(edge => edge.GetWeight()).ToList();
+            int minimumWeightEdge = edgesWeights.Min();
+            int minimumWeightEdgeIndex = edgesWeights.IndexOf(minimumWeightEdge);
+            
+            return Edges.ElementAt(minimumWeightEdgeIndex);
         }
         
         
