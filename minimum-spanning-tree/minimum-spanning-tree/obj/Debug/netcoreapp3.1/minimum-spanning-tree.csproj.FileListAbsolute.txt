@@ -1,0 +1,12 @@
+/Users/alex/Fifth_semestr/algorithms/minimum-spanning-tree/minimum-spanning-tree/bin/Debug/netcoreapp3.1/minimum-spanning-tree.deps.json
+/Users/alex/Fifth_semestr/algorithms/minimum-spanning-tree/minimum-spanning-tree/bin/Debug/netcoreapp3.1/minimum-spanning-tree.runtimeconfig.json
+/Users/alex/Fifth_semestr/algorithms/minimum-spanning-tree/minimum-spanning-tree/bin/Debug/netcoreapp3.1/minimum-spanning-tree.runtimeconfig.dev.json
+/Users/alex/Fifth_semestr/algorithms/minimum-spanning-tree/minimum-spanning-tree/bin/Debug/netcoreapp3.1/minimum-spanning-tree.dll
+/Users/alex/Fifth_semestr/algorithms/minimum-spanning-tree/minimum-spanning-tree/bin/Debug/netcoreapp3.1/minimum-spanning-tree.pdb
+/Users/alex/Fifth_semestr/algorithms/minimum-spanning-tree/minimum-spanning-tree/obj/Debug/netcoreapp3.1/minimum-spanning-tree.csprojAssemblyReference.cache
+/Users/alex/Fifth_semestr/algorithms/minimum-spanning-tree/minimum-spanning-tree/obj/Debug/netcoreapp3.1/minimum-spanning-tree.AssemblyInfoInputs.cache
+/Users/alex/Fifth_semestr/algorithms/minimum-spanning-tree/minimum-spanning-tree/obj/Debug/netcoreapp3.1/minimum-spanning-tree.AssemblyInfo.cs
+/Users/alex/Fifth_semestr/algorithms/minimum-spanning-tree/minimum-spanning-tree/obj/Debug/netcoreapp3.1/minimum-spanning-tree.csproj.CoreCompileInputs.cache
+/Users/alex/Fifth_semestr/algorithms/minimum-spanning-tree/minimum-spanning-tree/obj/Debug/netcoreapp3.1/minimum-spanning-tree.dll
+/Users/alex/Fifth_semestr/algorithms/minimum-spanning-tree/minimum-spanning-tree/obj/Debug/netcoreapp3.1/minimum-spanning-tree.pdb
+/Users/alex/Fifth_semestr/algorithms/minimum-spanning-tree/minimum-spanning-tree/obj/Debug/netcoreapp3.1/minimum-spanning-tree.genruntimeconfig.cache

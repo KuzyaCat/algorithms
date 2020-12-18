@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,7 +18,7 @@ namespace minimum_spanning_tree
 
                 if (possibleEdges.Count > 0)
                 {
-                    Edge nextEdge = GetMinimumByWeightEdge(Edges);
+                    Edge nextEdge = GetMinimumByWeightEdge(possibleEdges);
                     nextEdge.ToVisit = false;
                     minimumSpanningTreeEdges.Add(nextEdge);
                 }
@@ -25,11 +26,11 @@ namespace minimum_spanning_tree
                 {
                     break;
                 }
-
-                foreach (var edge in Edges)
-                {
-                    edge.ToVisit = true;
-                }
+            }
+            
+            foreach (var edge in Edges)
+            {
+                edge.ToVisit = true;
             }
 
             return minimumSpanningTreeEdges;
@@ -40,7 +41,7 @@ namespace minimum_spanning_tree
             List<Edge> unvisitedEdges = Edges.Where(edge => edge.ToVisit).ToList();
 
             return unvisitedEdges
-                .Where(edge => edge.GetStartNode().IsFormCycle(edge.GetEndNode(), Edges))
+                .Where(edge => !edge.GetStartNode().IsFormCycle(edge.GetEndNode(), Edges))
                 .ToList();
         }
     }
