@@ -1,21 +1,22 @@
 using System;
 using System.Collections;
-using System.Drawing;
+using System.Collections.Generic;
 
 namespace graphs
 {
     public class BipartiteGraph : IGraph
     {
         private char[] NodesDenotation;
-        private int[,] GraphMatrix;
+        private List<int>[] ContiguityLists;
         private int[] Colors; // 0 - without color, 1 - color one, 2 - color two
+        private bool _isNotBipartite = false;
 
-        public BipartiteGraph(char[] nodes, int [,] graphMatrix)
+        public BipartiteGraph(char[] nodes, List<int>[] contiguityLists)
         {
             NodesDenotation = nodes;
             Colors = new int[NodesDenotation.Length];
             Array.Fill(Colors, 0);
-            GraphMatrix = graphMatrix;
+            ContiguityLists = contiguityLists;
         }
         
         public int GetIndex(char node)
@@ -32,27 +33,36 @@ namespace graphs
             return color == 1 ? 2 : 1;
         }
         
-        private bool BipartiteGraphPartsSearch(int index, int currentNodeColor) {
-            if (Colors[index] == 0)
+        
+        public void FindBipartiteParts()
+        {
+            if (ContiguityLists.Length == 0 || ContiguityLists.Length == 1 || !DepthSearch(0, 1))
             {
-                Colors[index] = currentNodeColor;
+                Console.WriteLine("The graph is not bipartite");
+                return;
             }
 
-            for (int i = 0; i < NodesDenotation.Length; i += 1)
+            PrintGraphParts();
+        }
+        
+        private bool DepthSearch(int node, int currentColor)
+        {
+            Colors[node] = currentColor;
+            foreach (int neighbor in ContiguityLists[node])
             {
-                if (GraphMatrix[index, i] == 1 && Colors[i] == Colors[index])
+                if (Colors[neighbor] == 0)
+                {
+                    int nextColor = InvertColor(currentColor);
+                    DepthSearch(neighbor, nextColor);
+                }
+                else if (Colors[neighbor] == currentColor)
                 {
                     return false;
                 }
-                if (Colors[i] == 0 && GraphMatrix[index, i] == 1)
-                {
-                    BipartiteGraphPartsSearch(i, InvertColor(currentNodeColor));
-                }
             }
-
             return true;
         }
-
+        
         private void PrintGraphParts()
         {
             ArrayList firstPartNodes = new ArrayList();
@@ -83,31 +93,6 @@ namespace graphs
                 Console.Write(secondPartNodes[i] + " ");
             }
             Console.WriteLine();
-        }
-
-        public void BipartiteGraphPartsSearch()
-        {
-            bool isBipartiteGraph = true;
-            
-            for (int i = 0; i < NodesDenotation.Length; i += 1)
-            {
-                isBipartiteGraph = BipartiteGraphPartsSearch(i, 1);
-
-                if (!isBipartiteGraph)
-                {
-                    break;
-                }
-            }
-
-            if (isBipartiteGraph)
-            {
-                Console.WriteLine("The graph is bipartite");
-                PrintGraphParts();
-            }
-            else
-            {
-                Console.WriteLine("The graph is not bipartite");
-            }
         }
     }
 }

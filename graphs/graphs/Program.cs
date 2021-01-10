@@ -34,7 +34,6 @@ namespace graphs
                 return new IGraph[]
                 {
                     new EulerGraph(nodesDenotation, graphMatrix, length),
-                    new BipartiteGraph(nodesDenotation, graphMatrix),
                     new ConnectedGraph(nodesDenotation, graphMatrix) 
                 };
             }
@@ -51,7 +50,7 @@ namespace graphs
             return new IGraph[]
             {
                 new EulerGraph(nodesDenotation, GraphSamples.TrueEulerGraphMatrix, nodesDenotation.Length),
-                new BipartiteGraph(nodesDenotation, GraphSamples.TrueBipartiteGraph),
+                new BipartiteGraph(nodesDenotation, GraphSamples.BipartiteGraphContiguityLists),
                 new ConnectedGraph(nodesDenotation, GraphSamples.ThreeComponentsGraph), 
             };
         }
@@ -64,7 +63,7 @@ namespace graphs
             BipartiteGraph bipartiteGraph = (BipartiteGraph) GetHardcodedData()[1];
             
             eulerGraph.GetEulerCycle();
-            bipartiteGraph.BipartiteGraphPartsSearch();
+            bipartiteGraph.FindBipartiteParts();
             
             ConnectedGraph connectedGraph = (ConnectedGraph)GetHardcodedData()[2];
             List<List<char>> components = connectedGraph.GetComponents();
