@@ -10,20 +10,20 @@ namespace TuringMachine
 
         static void Main(string[] args)
         {
-            //Task1();
+            Task1();
             Task2();
         }
-        
-        //  Г={0,1,2}. Considering a non-empty word P to be a positive ternary number, decrease this number by 1
+
+        // Г = {0,1,2}. Considering a non-empty word P to be a positive ternary number, decrease this number by 1
         static void Task1()
         {
             var transitions = new Dictionary<(string, char), (string, char, Move)>
             {
-                {("q0", 'a'), ("q0", '0', Move.ToNext)},
+                {("q0", '0'), ("q0", '0', Move.ToNext)},
                 {("q0", '1'), ("q0", '1', Move.ToNext)},
                 {("q0", '2'), ("q0", '2', Move.ToNext)},
                 {("q0", EMPTY_CHAR), ("q1", EMPTY_CHAR, Move.ToPrev)},
-                {("q1", '0'), ("q1", '1', Move.ToPrev)},
+                {("q1", '0'), ("q1", '2', Move.ToPrev)},
                 {("q1", '1'), ("qy", '0', Move.ToCurrent)},
                 {("q1", '2'), ("qy", '1', Move.ToCurrent)},
             };
@@ -39,11 +39,12 @@ namespace TuringMachine
 
             foreach (var word in inputWords)
             {
-                var turingMachine = new Machine(new[] {'a', 'b'}, transitions, word);
+                Console.Write(word + " -> ");
+                var turingMachine = new Machine(new[] { '0', '1', '2' }, transitions, word);
                 var result = new string(turingMachine.Run(1).Item2);
                 Console.WriteLine(result);
             }
-            
+
             // var turingMachine = new Machine(new[] {'0', '1', '2'}, transitions, GetInputData());
             // var result = new string(turingMachine.Run(1).Item2);
             // Console.WriteLine(result);
@@ -56,19 +57,19 @@ namespace TuringMachine
             {
                 {("q0", 'a'), ("q1", EMPTY_CHAR, Move.ToNext)},
                 {("q0", 'b'), ("q2", EMPTY_CHAR, Move.ToNext)},
-                
-                
+
+
                 {("q1", 'a'), ("q1", 'a', Move.ToNext)},
                 {("q1", 'b'), ("q1", 'b', Move.ToNext)},
                 {("q1", EMPTY_CHAR), ("qa", EMPTY_CHAR, Move.ToPrev)},
-                
-                
+
+
                 {("qa", 'a'), ("qaa", EMPTY_CHAR, Move.ToPrev)},
-                
+
                 {("qaa", 'a'), ("qaa", 'a', Move.ToPrev)},
                 {("qaa", 'b'), ("qaa", 'b', Move.ToPrev)},
                 {("qaa", EMPTY_CHAR), ("qa1", 'a', Move.ToNext)},
-                
+
                 {("qa1", 'a'), ("qa2", EMPTY_CHAR, Move.ToNext)},
                 {("qa2", EMPTY_CHAR), ("qy", 'a', Move.ToCurrent)},
                 {("qa2", 'a'), ("qa4", 'a', Move.ToNext)},
@@ -88,13 +89,13 @@ namespace TuringMachine
                 {("qa6", EMPTY_CHAR), ("qa7", 'a', Move.ToPrev)},
                 {("qa7", 'a'), ("qba", EMPTY_CHAR, Move.ToPrev)},
                 {("qa7", 'b'), ("qbb", EMPTY_CHAR, Move.ToPrev)},
-                
+
                 {("qa", 'b'), ("qab", EMPTY_CHAR, Move.ToPrev)},
-                
+
                 {("qab", 'a'), ("qab", 'a', Move.ToPrev)},
                 {("qab", 'b'), ("qab", 'b', Move.ToPrev)},
-                {("qab", EMPTY_CHAR), ("qa1", 'a', Move.ToNext)},
-                
+                {("qab", EMPTY_CHAR), ("qa8", 'a', Move.ToNext)},
+
                 {("qa8", 'a'), ("qa9", EMPTY_CHAR, Move.ToNext)},
                 {("qa9", EMPTY_CHAR), ("qy", 'b', Move.ToCurrent)},
                 {("qa9", 'a'), ("qa10", 'a', Move.ToNext)},
@@ -122,11 +123,11 @@ namespace TuringMachine
 
 
                 {("qb", 'a'), ("qba", EMPTY_CHAR, Move.ToPrev)},
-                
+
                 {("qba", 'a'), ("qba", 'a', Move.ToPrev)},
                 {("qba", 'b'), ("qba", 'b', Move.ToPrev)},
                 {("qba", EMPTY_CHAR), ("qb1", 'b', Move.ToNext)},
-                
+
                 {("qb1", 'a'), ("qb2", EMPTY_CHAR, Move.ToNext)},
                 {("qb2", EMPTY_CHAR), ("qy", 'a', Move.ToCurrent)},
                 {("qb2", 'a'), ("qb3", 'a', Move.ToNext)},
@@ -136,7 +137,7 @@ namespace TuringMachine
                 {("qb3", EMPTY_CHAR), ("qb4", 'a', Move.ToPrev)},
                 {("qb4", 'a'), ("qaa", EMPTY_CHAR, Move.ToPrev)},
                 {("qb4", 'b'), ("qab", EMPTY_CHAR, Move.ToPrev)},
-                
+
                 {("qb1", 'b'), ("qb5", EMPTY_CHAR, Move.ToNext)},
                 {("qb5", EMPTY_CHAR), ("qy", 'a', Move.ToCurrent)},
                 {("qb5", 'a'), ("qb6", 'a', Move.ToNext)},
@@ -147,23 +148,23 @@ namespace TuringMachine
                 {("qb7", 'a'), ("qba", EMPTY_CHAR, Move.ToPrev)},
                 {("qb7", 'b'), ("qbb", EMPTY_CHAR, Move.ToPrev)},
 
-                
+
                 {("qb", 'b'), ("qbb", EMPTY_CHAR, Move.ToPrev)},
-                
+
                 {("qbb", 'a'), ("qbb", 'a', Move.ToPrev)},
                 {("qbb", 'b'), ("qbb", 'b', Move.ToPrev)},
                 {("qbb", EMPTY_CHAR), ("qb8", 'b', Move.ToNext)},
-                
+
                 {("qb8", 'a'), ("qb9", EMPTY_CHAR, Move.ToNext)},
                 {("qb9", EMPTY_CHAR), ("qy", 'b', Move.ToCurrent)},
                 {("qb9", 'a'), ("qb10", 'a', Move.ToNext)},
                 {("qb9", 'b'), ("qb10", 'b', Move.ToNext)},
-                {("qb10", EMPTY_CHAR), ("qb10", 'b', Move.ToPrev)},
+                {("qb10", EMPTY_CHAR), ("qb11", 'b', Move.ToPrev)},
                 {("qb10", 'a'), ("qb10", 'a', Move.ToNext)},
                 {("qb10", 'b'), ("qb10", 'b', Move.ToNext)},
                 {("qb11", 'a'), ("qaa", EMPTY_CHAR, Move.ToPrev)},
                 {("qb11", 'b'), ("qab", EMPTY_CHAR, Move.ToPrev)},
-                
+
                 {("qb8", 'b'), ("qb12", EMPTY_CHAR, Move.ToNext)},
                 {("qb12", EMPTY_CHAR), ("qy", 'b', Move.ToCurrent)},
                 {("qb12", 'a'), ("qb13", 'a', Move.ToNext)},
@@ -183,15 +184,18 @@ namespace TuringMachine
                 "aaaaa",
                 "bbbbb",
                 "babaa",
+                "babab",
+                "babba"
             };
 
             foreach (var word in inputWords)
             {
-                var turingMachine = new Machine(new[] {'a', 'b'}, transitions, word);
+                Console.Write(word + " -> ");
+                var turingMachine = new Machine(new[] { 'a', 'b' }, transitions, word);
                 var result = new string(turingMachine.Run(1).Item2);
                 Console.WriteLine(result);
             }
-            
+
             // string word = GetInputData();
             // if (word.Length != 3)
             // {
@@ -201,7 +205,7 @@ namespace TuringMachine
             // var result = new string(turingMachine.Run(1).Item2);
             // Console.WriteLine(result);
         }
-        
+
         static string GetInputData()
         {
             Console.WriteLine("Write a word:");
