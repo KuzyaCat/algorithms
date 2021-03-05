@@ -10,7 +10,7 @@ namespace TuringMachine
 
         static void Main(string[] args)
         {
-            Task1();
+            // Task1();
             Task2();
         }
 
@@ -71,7 +71,7 @@ namespace TuringMachine
                 {("qaa", EMPTY_CHAR), ("qa1", 'a', Move.ToNext)},
 
                 {("qa1", 'a'), ("qa2", EMPTY_CHAR, Move.ToNext)},
-                {("qa2", EMPTY_CHAR), ("qy", 'a', Move.ToCurrent)},
+                {("qa2", EMPTY_CHAR), ("qpadstart", 'a', Move.ToCurrent)},
                 {("qa2", 'a'), ("qa4", 'a', Move.ToNext)},
                 {("qa2", 'b'), ("qa4", 'b', Move.ToNext)},
                 {("qa4", 'a'), ("qa4", 'a', Move.ToNext)},
@@ -81,7 +81,7 @@ namespace TuringMachine
                 {("qa5", 'b'), ("qab", EMPTY_CHAR, Move.ToPrev)},
 
                 {("qa1", 'b'), ("qa3", EMPTY_CHAR, Move.ToNext)},
-                {("qa3", EMPTY_CHAR), ("qy", 'a', Move.ToCurrent)},
+                {("qa3", EMPTY_CHAR), ("qpadstart", 'a', Move.ToCurrent)},
                 {("qa3", 'a'), ("qa6", 'a', Move.ToNext)},
                 {("qa3", 'b'), ("qa6", 'b', Move.ToNext)},
                 {("qa6", 'a'), ("qa6", 'a', Move.ToNext)},
@@ -97,7 +97,7 @@ namespace TuringMachine
                 {("qab", EMPTY_CHAR), ("qa8", 'a', Move.ToNext)},
 
                 {("qa8", 'a'), ("qa9", EMPTY_CHAR, Move.ToNext)},
-                {("qa9", EMPTY_CHAR), ("qy", 'b', Move.ToCurrent)},
+                {("qa9", EMPTY_CHAR), ("qpadstart", 'b', Move.ToCurrent)},
                 {("qa9", 'a'), ("qa10", 'a', Move.ToNext)},
                 {("qa9", 'b'), ("qa10", 'b', Move.ToNext)},
                 {("qa10", 'a'), ("qa10", 'a', Move.ToNext)},
@@ -107,7 +107,7 @@ namespace TuringMachine
                 {("qa11", 'b'), ("qab", EMPTY_CHAR, Move.ToPrev)},
 
                 {("qa8", 'b'), ("qa12", EMPTY_CHAR, Move.ToNext)},
-                {("qa12", EMPTY_CHAR), ("qy", 'b', Move.ToCurrent)},
+                {("qa12", EMPTY_CHAR), ("qpadstart", 'b', Move.ToCurrent)},
                 {("qa12", 'a'), ("qa13", 'a', Move.ToNext)},
                 {("qa12", 'b'), ("qa13", 'b', Move.ToNext)},
                 {("qa13", 'a'), ("qa13", 'a', Move.ToNext)},
@@ -129,7 +129,7 @@ namespace TuringMachine
                 {("qba", EMPTY_CHAR), ("qb1", 'b', Move.ToNext)},
 
                 {("qb1", 'a'), ("qb2", EMPTY_CHAR, Move.ToNext)},
-                {("qb2", EMPTY_CHAR), ("qy", 'a', Move.ToCurrent)},
+                {("qb2", EMPTY_CHAR), ("qpadstart", 'a', Move.ToCurrent)},
                 {("qb2", 'a'), ("qb3", 'a', Move.ToNext)},
                 {("qb2", 'b'), ("qb3", 'b', Move.ToNext)},
                 {("qb3", 'a'), ("qb3", 'a', Move.ToNext)},
@@ -139,7 +139,7 @@ namespace TuringMachine
                 {("qb4", 'b'), ("qab", EMPTY_CHAR, Move.ToPrev)},
 
                 {("qb1", 'b'), ("qb5", EMPTY_CHAR, Move.ToNext)},
-                {("qb5", EMPTY_CHAR), ("qy", 'a', Move.ToCurrent)},
+                {("qb5", EMPTY_CHAR), ("qpadstart", 'a', Move.ToCurrent)},
                 {("qb5", 'a'), ("qb6", 'a', Move.ToNext)},
                 {("qb5", 'b'), ("qb6", 'b', Move.ToNext)},
                 {("qb6", 'a'), ("qb6", 'a', Move.ToNext)},
@@ -156,7 +156,7 @@ namespace TuringMachine
                 {("qbb", EMPTY_CHAR), ("qb8", 'b', Move.ToNext)},
 
                 {("qb8", 'a'), ("qb9", EMPTY_CHAR, Move.ToNext)},
-                {("qb9", EMPTY_CHAR), ("qy", 'b', Move.ToCurrent)},
+                {("qb9", EMPTY_CHAR), ("qpadstart", 'b', Move.ToCurrent)},
                 {("qb9", 'a'), ("qb10", 'a', Move.ToNext)},
                 {("qb9", 'b'), ("qb10", 'b', Move.ToNext)},
                 {("qb10", EMPTY_CHAR), ("qb11", 'b', Move.ToPrev)},
@@ -166,7 +166,7 @@ namespace TuringMachine
                 {("qb11", 'b'), ("qab", EMPTY_CHAR, Move.ToPrev)},
 
                 {("qb8", 'b'), ("qb12", EMPTY_CHAR, Move.ToNext)},
-                {("qb12", EMPTY_CHAR), ("qy", 'b', Move.ToCurrent)},
+                {("qb12", EMPTY_CHAR), ("qpadstart", 'b', Move.ToCurrent)},
                 {("qb12", 'a'), ("qb13", 'a', Move.ToNext)},
                 {("qb12", 'b'), ("qb13", 'b', Move.ToNext)},
                 {("qb13", 'a'), ("qb13", 'a', Move.ToNext)},
@@ -174,6 +174,15 @@ namespace TuringMachine
                 {("qb13", EMPTY_CHAR), ("qb14", 'b', Move.ToPrev)},
                 {("qb14", 'a'), ("qba", EMPTY_CHAR, Move.ToPrev)},
                 {("qb14", 'b'), ("qbb", EMPTY_CHAR, Move.ToPrev)},
+
+                {("qpadstart", 'a'), ("qpad", 'a', Move.ToPrev)},
+                {("qpadstart", 'b'), ("qpad", 'b', Move.ToPrev)},
+                {("qpad", EMPTY_CHAR), ("qchoice", EMPTY_CHAR, Move.ToNext)},
+                {("qchoice", EMPTY_CHAR), ("qy", EMPTY_CHAR, Move.ToCurrent)},
+                {("qchoice", 'a'), ("qpada", EMPTY_CHAR, Move.ToPrev)},
+                {("qchoice", 'b'), ("qpadb", EMPTY_CHAR, Move.ToPrev)},
+                {("qpada", EMPTY_CHAR), ("qpad", 'a', Move.ToNext)},
+                {("qpadb", EMPTY_CHAR), ("qpad", 'b', Move.ToNext)},
             };
 
             var inputWords = new[]
